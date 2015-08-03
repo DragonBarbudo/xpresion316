@@ -1,0 +1,456 @@
+@import "cssresetframe";
+@import "birth/stylesheet.css";
+@import "fancy/fancybox.css";
+
+/*	*	*	*	*	*	*	*	*	GRID 4 LESS		*	*	*	*	*	*	*	*/
+@columns: 16;
+@width: 960px;
+@gutt: 10px;
+@w:@width/@columns;
+.container(@padd:0px) { margin: 0 auto; width: @width; padding-top: @padd; padding-bottom: @padd; }
+.grid(@gu:@gutt) { display: inline; float: left; position: relative; margin-left: @gu; margin-right: @gu; }
+.alpha { margin-left: 0;  }
+.omega { margin-right: 0; }
+.grid_(@num, @pushpull:0, @align:left, @gutter:@gutt){ .grid(@gutter); width: (@w*@num)-(@gutter*2); left: @w*@pushpull; text-align: @align;  }
+.cont_(@num, @pushpull:0, @align:left, @gutter:@gutt){ .grid(@gutter); width: (@w*@num); left: @w*@pushpull; text-align: @align;  margin:0;}
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+.tester{ position: fixed; top: 0; background: #aaa; height: 100%;width: @width;left: 50%;margin-left: -(@width/2);z-index: 1; opacity: 0.2; div { .grid_(1); height: 100%; background: #eee; }}
+/*	*	*	*	*	*	*	*	*	end		*	*	*	*	*	*	*	*/
+
+/*	COLORES	*/
+@c1: #f5f5f5;
+@c2: #222;
+@c3: #A6CF39;
+@c4: #8EB200;
+
+.font{
+	font-family: 'BIRTHOFAHERORegular';
+}
+
+/*	TESTER	*/
+.tester{
+	visibility: visible ;
+}
+/*	*	*	*	*	*	*	*	*	MAIN CSS		*	*	*	*	*	*	*	*/
+
+
+body{
+	background: @c2;
+	color: @c2;
+	font-family: Arial, sans-serif;
+}
+
+header{
+	padding-top: 40px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #333333;
+	background: url(../imgs/bg.png);
+	#header{
+		width: 100%;
+		height: 60px;
+		background: @c3;
+		border-bottom: 20px solid @c4;
+		margin-bottom: 20px;
+		h1{
+			.container;
+			text-align: center;
+			img{
+				margin-top: -22px;
+				
+			}
+		}
+	}
+	nav{
+		.container;
+		
+		ul{
+			.cont_(8,4);
+			background: @c3;
+			border-bottom: 4px solid @c4;
+			li{
+				.grid_(2,0,center);
+				.font;
+				a, a:visited{
+					display: block;
+					text-decoration: none;
+					color: @c2;
+					background: @c3;
+					padding: 5px;
+					font-size: 1.4em;
+					&:hover, &.active, {
+						color: @c1;
+						background: @c4;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+#slider{
+	.container(20px);
+	div{
+		.grid_(16);
+		height: 200px;
+		article{
+			position: absolute;
+			overflow: hidden;
+		}
+	}
+}
+
+#about{
+	.container(20px);
+	article{
+		.grid_(8,0,justify);
+		h2{
+			.font;
+			font-weight: normal;
+			font-size: 2em;
+			color: @c1;
+			padding: 10px 0;
+			display: block;
+			border-bottom: 4px solid @c3;
+		}
+		p{
+			color: @c1;
+			margin: 10px 0;
+		}
+	}
+}
+
+
+
+
+#servicios{
+	.container(20px);
+	ul{
+		.grid_(5);
+		list-style: none;
+		li{
+			margin: 2px 0;
+			a{
+				display: block;
+				padding: 5px 0;
+				color: @c2;
+				text-decoration: none;
+				background: @c3;
+				line-height: 20px;
+				border-bottom: 2px solid @c4;
+				span{
+					display: block;
+					width: 20px;
+					height: 20px;
+					background: @c4;
+					margin: 0px 10px 0 5px;
+					float: left;
+				}
+				&:hover, &.active{
+					background: @c1;
+					color: @c2;
+				}
+			}
+		}
+	}
+	#descripciones{
+		.grid_(11);
+		background: @c1;
+		border-bottom: 10px solid @c4;
+		margin-top: 2px;
+		position:relative;
+		table{
+			border-collapse: collapse;
+			border: none;
+			border-bottom: 2px solid @c3;
+			td:first-child{
+				width: 460px;
+				padding: 8px;
+				&+td{
+					width: 180px;
+					padding: 8px;
+				}
+			}
+			.imagen{
+				display:block;
+				position:absolute;
+				right:-70px;
+				top:-100px;
+				text-align:right; 
+			}
+			thead{
+				background: @c4;
+				border-bottom: 2px solid @c3;
+				color: @c1;
+			}	
+		}
+		.fabricacion{
+			position: absolute;
+			right: 0;
+			bottom: -28px;
+			color: @c4;
+		}
+	}
+}
+
+
+
+
+
+#portafolio{
+	.container(20px);
+	article{
+		.grid_(4);
+		background: @c3;
+		border-bottom: 4px solid @c4;
+		height: 120px;
+		margin-bottom: 10px;
+		a{
+			display: block;
+			width: 210px;
+			height: 110px;
+			margin: 5px;
+			overflow: hidden;
+		}
+	}
+}
+
+
+
+#contacto{
+	.container(20px);
+	article{
+		.grid_(8);
+		h2{
+			.font;
+			font-weight: normal;
+			font-size: 2em;
+			color: @c1;
+			padding: 10px 0;
+			display: block;
+			border-bottom: 4px solid @c3;
+		}
+		&>div{
+			background: @c3;
+			border-bottom: 10px solid @c4;
+			margin-top: 20px;
+            padding-top: 1px;
+			form{
+				margin: 10px 10px 5px 10px;
+				label{
+					color: @c2;
+					display: block;
+					padding: 10px 0 0 0;
+				}
+				input, textarea, [required]{
+					border: none;
+					background: @c1;
+					border-bottom: 2px solid @c4;
+					width: 430px;
+					padding: 5px;
+					display: block;
+				}
+				textarea{
+					height: 60px;
+					resize: none;
+				}
+				button{
+					border: none;
+					background: @c4;
+					color: @c1;
+					float: right;
+					padding: 5px 40px;
+					margin-top: 10px;
+					&:hover{
+						color: @c4;
+						background: @c1;
+					}
+				}
+			}
+			#map_canvas{
+                background: none;
+                display: block;
+				margin: 5px;
+				width:450px;
+				height:350px;
+			}
+		}
+	}
+}
+
+#mapc{
+	line-height: 1.2em;
+	
+	strong{
+		font-size: 1.4em;
+	}
+	p{
+		margin: 10px 0;
+	}
+	address{
+		float: left;
+		width: 160px;
+		font-size: 0.8em;
+	}
+	#mapphone{
+		clear: both;
+		float: left;
+		width:140px;
+	}
+	img{
+		float: right;
+		height: 80px;
+	}
+}
+
+
+
+footer{
+	width: 100%;
+	background: @c3;
+	border-bottom: 10px solid @c4;
+	margin-top: 20px;
+	#footer{
+		.container(5px);
+		article{
+			.grid_(8);
+			h3{
+				.font;
+				font-size: 1.6em;
+				font-weight: normal;
+				color: @c1;
+				display: block;
+				padding: 4px;
+				background: @c4;
+				margin-bottom: 5px;
+			}
+			address{
+				font-style: normal;
+				
+			}
+			.double{
+				float: left;
+				width: 460px/2;
+				a{
+					color: @c2;
+					text-decoration: none;
+					font-weight: bold;
+					margin: 5px 0;
+					display: block;
+					&:hover{
+						color: @c4;
+					}
+				}
+			}
+		}
+	}
+}
+
+.buttongreen{
+		border: none;
+		background: @c3;
+		color: @c2;
+		border-bottom: 2px solid @c4;
+		padding: 5px 40px;
+		.font;
+		font-size: 1.4em;
+		letter-spacing: 2px;
+		cursor: pointer;
+		margin: 0 auto;
+		&:hover{
+			background: @c4;
+			border-bottom: 2px solid @c3;
+			color: @c1;
+		}
+	}
+
+form#salir{
+	width: 100%;
+	text-align: center;
+	margin-top: -20px;
+	button{
+		.buttongreen;
+	}
+}
+/* ADMIN */
+#admin{
+	.container(20px);
+	position: relative;
+	#loginform{
+		.grid_(6, 5,center);
+		label{
+			color: @c3;
+			display: block;
+			padding: 10px 0 0 0;
+			margin-bottom: 10px;
+		}
+		input,[required]{
+			border: none;
+			background: @c1;
+			border-bottom: 2px solid @c4;
+			width: 330px;
+			padding: 5px;
+			display: block;
+			text-align: center;
+		}
+		button{
+			.buttongreen;
+		}
+	}
+	h2{
+		.grid_(6);
+		color: @c1;
+		.font;
+		letter-spacing: 2px;
+		font-weight: normal;
+		margin-top: 10px;
+	}
+	.image{
+		.grid_(3,1,center);
+		background: @c4;
+		margin-top: 10px;
+		img{
+			margin: 5px;
+		}
+		a{
+			display: block;
+			color: @c1;
+			text-decoration: none;
+			background: @c3;
+			padding: 2px 0;
+			&:hover{
+				background: @c1;
+				color: @c4;
+			}
+		}
+	}
+}
+
+#newfile{
+	.grid_(6,5);
+	border-bottom: 1px solid #333333;
+	background: url(../imgs/bg.png);
+	padding-bottom: 20px;
+	margin-top: 10px;
+	label{
+			color: @c3;
+			display: block;
+			padding: 10px 0 0 0;
+			margin: 10px;
+		}
+		input,[required], select{
+			border: none;
+			background: @c1;
+			border-bottom: 2px solid @c4;
+			width: 310px;
+			padding: 5px;
+			display: block;
+			text-align: center;
+			margin: 10px;
+		}
+		button{
+			display: block;
+			margin: 10px 0;
+			.buttongreen;
+		}
+}
